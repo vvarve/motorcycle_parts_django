@@ -1,6 +1,8 @@
 # motorcycle_parts_django
 ### This is a management inventory ORM model with motorcycle parts or accesories and compatibility them
 
+The project help to search and flexibility the parts when a inventory has considerable references
+
 *The project has two modes that will depend on how you log in:*
 
 - Management and editing model (Sign in like admin)
