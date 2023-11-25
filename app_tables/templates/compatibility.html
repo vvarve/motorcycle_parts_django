@@ -1,0 +1,153 @@
+{% extends "outside/outside.html" %}
+{% load static %}
+{% block main %}
+{% if user.is_superuser %}
+{% if compatibility_edit %}
+<div id="all_div_register">
+    <div id="form_style_2">
+        <div id="reg_title">
+            <h1>edit compatibility</h1>
+            <span id="icon_title"></span>
+        </div>
+        <form id="form_product" action="{% url 'form_editing_compatibility' %}" method="POST">
+            
+            {% csrf_token %}
+                <div>
+                <label for="select_compatibility1">compatibility:</label>
+                <select name="select_compatibility1">
+                    <option value="{{compatibility_edit.code_product}}">{{compatibility_edit.code_product}}</option>
+                    {% for row in product_a %}
+                    <option value="{{row}}">{{row}}</option>
+                    {% endfor %}
+                </select>
+                </div>
+                <div>
+                <label for="select_compatibility2">compatibility:</label>
+                <select name="select_compatibility2">
+                    <option value="{{compatibility_edit.code_ref}}">{{compatibility_edit.code_ref}}</option>
+                    {% for row in product_a %}
+                    <option value="{{row}}">{{row}}</option>
+                    {% endfor %}
+                </select>
+                </div>
+                <div>
+                    <button id="button_edit" type="submit">edit</button>
+                </div>
+        </form>
+    </div>
+</div>
+
+{% else %}
+<div id="all_div_register">
+    <div id="form_style_2">
+        <div id="reg_title">
+            <h1>register compatibility</h1>
+            <span id="icon_title"></span>
+        </div>
+        <form id="form_product" action="{% url 'form_send_compatibility' %}" method="POST">
+            
+            {% csrf_token %}
+                <div>
+                    <label for="select_compatibility1">code:</label>
+                    <select name="select_compatibility1">
+                        <option value="">SELECT A CODE</option>
+                        {% for row in product_a %}
+                        <option value="{{row}}">{{row}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <label for="select_compatibility2">compatibility:</label>
+                    <select name="select_compatibility2">
+                        <option value="">SELECT A CODE COMPATIBILITY</option>
+                        {% for row in product_a %}
+                        <option value="{{row}}">{{row}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <button id="button_register_product" type="submit">register</button>
+                </div>
+        </form>
+    </div>
+</div>
+{% endif %}
+{% endif %}
+
+<div id="form_style">
+    <form method="POST">
+        {% if user.is_superuser %}
+        <div id="reset_form">
+            <a href="/compatibility">go to register compatibility</a>
+        </div>
+        {% endif %}
+        <div id="search_div">
+            {% csrf_token %}
+            <label for="search_product">Search reference: </label>
+            <input type="search" name="search_product" id="search_style" placeholder="search">
+            <button id="submit_search_style" type="submit">search</button>
+        </div>
+    </form>
+</div>
+
+{% if user.is_superuser %}
+<div id="div_table">
+
+    <table id="table_product">
+
+        <thead>
+            <tr>
+                <th colspan="4" id="th_one">compatibility</th>
+            </tr>
+            <tr id="tr_head_second">
+                <th>code</th>
+                <th>compatibility</th>
+                <th colspan="2">manage</th>
+            </tr>
+        </thead>
+            {% for row in compatibility_a %}
+                <tr>
+                    <td>{{row.code_product}}</td>
+                    <td>{{row.code_ref}}</td>
+                    <td><a id="delete" href="/delete_c/{{row.id}}">delete</a></td>
+                    <td><a id="edit" href="/edit_c/{{row.id}}">edit</a></td>
+                </tr>
+            {% endfor %}
+
+        <tbody>
+        </tbody>
+
+    </table>
+
+</div>
+{% else %}
+<div id="div_table">
+
+    <table id="table_product">
+
+        <thead>
+            <tr>
+                <th colspan="2" id="th_one">compatibility</th>
+            </tr>
+            <tr id="tr_head_second">
+                <th>code</th>
+                <th>compatibility</th>
+            </tr>
+        </thead>
+            {% for row in compatibility_a %}
+                <tr>
+                    <td>{{row.code_product}}</td>
+                    <td>{{row.code_ref}}</td>
+                </tr>
+            {% endfor %}
+
+        <tbody>
+        </tbody>
+
+    </table>
+
+</div>
+{% endif %}
+
+<script src="{% static 'js/c.js' %}"></script>
+{% endblock %}

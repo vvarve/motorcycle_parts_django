@@ -1,0 +1,343 @@
+body {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+
+nav {
+    position: fixed;
+    display: grid;
+    background-color: black;
+    height: 100%;
+    width: 11%;
+}
+
+ul{
+    margin-top: 20%;
+    padding-left: 0%;
+}
+
+li {
+    list-style: none;
+    text-decoration: none;
+}
+
+
+#uls li a {
+    display: block;
+    align-items: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    height: 20%;
+    width: 100%;
+    color: white;
+    padding: 10%;
+}
+
+#uls li a:hover {
+    background-color: #2B2B2B;
+    font-weight: 500;
+}
+
+#uls_ft {
+    margin-bottom: 0;
+}
+
+#uls_ft li {
+    margin-top: 200%;
+}
+
+#uls_ft li a {
+        display: block;
+        text-decoration: none;
+        text-transform: uppercase;
+        text-align: center;
+        height: 20%;
+        width: 80%;
+        color: white;
+        padding: 10%;
+}
+
+#uls_ft li a:hover {
+    font-weight: 500;
+}
+
+.main_css{
+    margin: auto;
+    padding-top: 2%;
+    display: grid;
+}
+
+.logo_home {
+    margin: auto;
+    margin-top: 10%;
+}
+
+.title {
+    color: #5e676f;
+    font-size: 10px;
+    margin: auto;
+}
+
+
+table {
+    margin: auto;
+    table-layout: fixed;
+    text-align: center;
+    border-collapse: collapse;
+    width: 80%;
+}
+
+#div_table { 
+    padding-left: 10%;
+}
+
+
+th, td {
+    padding: 10px;
+    border-radius: 5%;
+}
+
+
+tr:nth-child(even) {
+    background-color: #E2E2E2;
+}
+
+#tr_head_second {
+    background-color: #ffffff;
+    border-bottom: 2px solid #E2E2E2;
+}
+
+#th_one {
+    background-color:  #EBEBEB;
+    text-transform: uppercase;
+    border-bottom: 2px solid #E2E2E2;
+}
+
+#img_td { 
+    width: 100px;
+    height: 50px;
+}
+
+td #delete {
+    display: block;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    height: 25px;
+    width: 70%;
+    background-color: red;
+    padding: 2%;
+    margin: auto;
+    border: 0;
+}
+
+td #delete:hover {
+    background-color: #AB1313;
+}
+
+td #edit {
+    display: block;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    height: 25px;
+    width: 70%;
+    background-color: blue;
+    padding: 2%;
+    margin: auto;
+    border: 0;
+}
+
+td #edit:hover {
+    background-color: #0C1756;
+}
+
+#form_style {
+    padding-left: 10%;
+    height:fit-content;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+#form_style #search_div{
+    margin-right: 0;
+    grid-column: 2;
+}
+
+#form_style form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-top: 1%;
+    padding-bottom: 1%;
+    background-color: #CACACA;
+    width: 80%; 
+    margin-left: 10%;
+    align-items: center;
+}
+
+
+#submit_search_style, #search_style {
+    padding: 1%;
+}
+
+#submit_search_style {
+    background-color: black;
+    border: 0;
+    margin-left: 2%;
+    color: white;
+    text-transform: uppercase;
+    padding: 1.5%;
+}
+
+#submit_search_style:hover {
+    background-color: #3C3C3C;
+}
+
+#reset_form {
+    margin: auto;
+
+}
+
+#reset_form a {
+    display: block;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    background-color: red;
+    width: 120%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    text-align: center;
+    border: 0;
+}
+
+#reset_form a:hover{
+    background-color: #AB1313;
+}
+
+#form_style_2 {
+    margin: auto;
+}
+
+#form_style_2 form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    margin:auto;
+    width: 80%;
+    border-left: 7px solid #EBEBEB;
+    border-right: 7px solid #EBEBEB;
+    background-color: #EBEBEB;
+    gap: 3%;
+    border-bottom: 20px solid #EBEBEB;
+}
+
+#form_style_2 form div {
+    display: grid;
+    grid-column: span;
+    margin-top: 3%;
+    grid-row: span;
+    
+}
+
+#form_style_2 form div input{
+    margin-top: 2%;
+    padding: 2%;
+}
+
+#form_style_2 form div select{
+    margin-top: 2%;
+    padding: 2%;
+}
+
+#form_style_2 form div label {
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+#reg_title {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: auto;
+    background-color: black;
+    width: 70%;
+    padding: 1%;
+    padding-left: 10%;
+}
+
+#reg_title h1 {
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 23px;
+    color: white;
+}
+
+#icon_title {
+    margin: auto;
+    background: url("re_source/pointer.svg");
+    width: 40px;
+    height: 23px;
+    margin-left: 80%;
+}
+
+#button_register_product {
+    margin: auto;
+    text-transform: uppercase;
+    background-color: red;
+    color: white;
+    height: 40px;
+    width: 100%;
+    border: 0;
+}
+
+
+#button_register_product:hover {
+    background-color: #AB1313;
+    cursor: pointer;
+}
+
+#button_edit {
+    margin: auto;
+    text-transform: uppercase;
+    background-color: blue;
+    color: white;
+    height: 40px;
+    width: 100%;
+    border: 0;
+}
+
+
+#button_edit:hover {
+    background-color: #0C1756;
+    cursor: pointer;
+}
+
+
+#div_relative {
+    position: relative;
+}
+
+#upload_image {
+    position: absolute;
+	top: 0;
+	left: 0;
+	width: 95%;
+	opacity: 0;
+	cursor: pointer;
+}
+
+#label_image {
+    display: block;
+	background: #C19754;
+	color: #fff;
+	font-size: 1em;
+	cursor: pointer;
+    text-align: center;
+    height: 50%;
+    padding-top: 2.5%;
+}
+
+#all_div_register {
+    padding-left: 10%;
+}
+

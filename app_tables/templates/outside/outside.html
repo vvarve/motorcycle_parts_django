@@ -1,0 +1,26 @@
+{% if user.is_authenticated %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="vector/svg" href="{% static 're_source/favicon.svg' %}">
+    <link rel="stylesheet" href="{% static "sty2.css" %}">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <nav>
+            {% include "outside/nav.html" %}
+        </nav>
+    </header>
+    <main class="main_css">
+        {% block main %}
+        {% endblock %}
+    </main>
+</body>
+</html>
+{% else %}
+<p>Please login for continue to manage o view this!</p><a href="{% url "login" %}">log in</a>
+{% endif %}

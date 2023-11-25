@@ -1,0 +1,171 @@
+{% extends "outside/outside.html" %}
+{% load static %}
+{% block main %}
+{% if user.is_superuser %}
+{% if product_edit %}
+
+<div id="all_div_register">
+    <div id="form_style_2">
+        <div id="reg_title">
+            <h1>edit product</h1>
+            <span id="icon_title"></span>
+        </div>
+        <form id="form_product" action="{% url 'form_editing' %}" method="POST" enctype="multipart/form-data">
+            
+            {% csrf_token %}
+                <div>
+                    <label for="code_input">code:</label>
+                    <input type="text" name="code_input" maxlength="9" required value="{{product_edit.code}}">
+                </div>
+                <div>
+                    <label for="accessory_input">part:</label>
+                    <input type="text" name="accessory_input" maxlength="30" required value="{{product_edit.accessory}}">
+                </div>
+                <div>
+                <label for="select_compatibility">motorcycle:</label>
+                <select name="select_compatibility">
+                    <option value="{{product_edit.compatibility}}">{{product_edit.compatibility}}</option>
+                {% for i in product_motorcycle %}
+                    <option value="{{i}}">{{i}}</option>
+                {% endfor %}
+                </select>
+                </div>
+                <div id="div_relative">
+                    <label id="label_image" for="image_input">select image</label>
+                    <input id="upload_image" type="file" name="image_input" accept="image/*" value="{{product_edit.images.url}}">
+                </div>
+                <div>
+                    <button id="button_edit" type="submit">edit</button>
+                </div>
+                <div>
+                    <i id="name_file">image not selected</i>
+                </div>
+        </form>
+    </div>
+</div>
+
+{% else %}
+<div id="all_div_register">
+    <div id="form_style_2">
+        <div id="reg_title">
+            <h1>register product</h1>
+            <span id="icon_title"></span>
+        </div>
+        <form id="form_product" action="{% url 'form_send' %}" method="POST" enctype="multipart/form-data">
+            
+            {% csrf_token %}
+                <div>
+                    <label for="code_input">code:</label>
+                    <input type="text" name="code_input" maxlength="9" required>
+                </div>
+                <div>
+                    <label for="accessory_input">part:</label>
+                    <input type="text" name="accessory_input" maxlength="30" required>
+                </div>
+                <div>
+                <label for="select_compatibility">motorcycle:</label>
+                <select name="select_compatibility">
+                        <option value="">SELECT A MOTORCYCLE</option>
+                    {% for i in product_motorcycle %}
+                        <option value="{{i}}">{{i}}</option>
+                    {% endfor %}
+                </select>
+                </div>
+                <div id="div_relative">
+                    <label id="label_image" for="image_input">select image</label>
+                    <input id="upload_image" type="file" name="image_input" accept="image/*">
+                </div>
+                <div>
+                    <button id="button_register_product" type="submit">register</button>
+                </div>
+                <div>
+                    <i id="name_file">image not selected</i>
+                </div>
+        </form>
+    </div>
+</div>
+{% endif %}
+{% endif %}
+
+    <div id="form_style">
+            <form method="POST">
+                {% if user.is_superuser %}
+                <div id="reset_form">
+                    <a href="/products">go to register product</a>
+                </div>
+                {% endif %}
+                <div id="search_div">
+                    {% csrf_token %}
+                    <label for="search_product">Search reference: </label>
+                    <input type="search" name="search_product" id="search_style" placeholder="search">
+                    <button id="submit_search_style" type="submit">search</button>
+                </div>
+            </form>
+    </div>
+
+{% if user.is_superuser %}
+    <div id="div_table">
+
+        <table id="table_product">
+
+            <thead>
+                <tr>
+                    <th colspan="6" id="th_one">{% if request.POST.search_product %}{{request.POST.search_product}}{% else %}products{% endif %} </th>
+                </tr>
+                <tr id="tr_head_second">
+                    <th>code</th>
+                    <th>images</th>
+                    <th>accessory/part</th>
+                    <th>motorcycle</th>
+                    <th colspan="2">manage</th>
+                </tr>
+            </thead>
+                {% for row in product_a %}
+                    <tr>
+                        <td>{{row.code}}</td>
+                        <td><img id="img_td" src="{{row.images.url}}"></td>
+                        <td>{{row.accessory}}</td>
+                        <td>{{row.compatibility}}</td>
+                        <td><a id="delete" href="/delete/{{row.id}}">delete</a></td>
+                        <td><a id="edit" href="/edit/{{row.id}}">edit</a></td>
+                    </tr>
+                {% endfor %}
+            <tbody> 
+            </tbody>
+
+        </table>
+
+    </div>
+{% else %}
+<div id="div_table">
+
+        <table id="table_product">
+
+            <thead>
+                <tr>
+                    <th colspan="4" id="th_one">{% if request.POST.search_product %}{{request.POST.search_product}}{% else %}products{% endif %} </th>
+                </tr>
+                <tr id="tr_head_second">
+                    <th>code</th>
+                    <th>images</th>
+                    <th>accessory/part</th>
+                    <th>motorcycle</th>
+                </tr>
+            </thead>
+                {% for row in product_a %}
+                    <tr>
+                        <td>{{row.code}}</td>
+                        <td><img id="img_td" src="{{row.images.url}}"></td>
+                        <td>{{row.accessory}}</td>
+                        <td>{{row.compatibility}}</td>
+                    </tr>
+                {% endfor %}
+            <tbody> 
+            </tbody>
+
+        </table>
+
+    </div>
+{% endif %}
+<script src="{% static 'js/p.js' %}"></script>
+{% endblock %}

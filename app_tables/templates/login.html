@@ -1,0 +1,20 @@
+{% extends "outside/outside_login.html" %}
+{% load static %}
+{% block main %}
+<link rel="stylesheet" type="text/css" href="{% static "sty.css" %}">
+<div id="div_login">
+    <h1>login</h1>
+    <form action="{% url "login" %}" method="POST">
+        {% csrf_token %}
+        {{form_auth_login.as_div}}
+        <div>
+            <button type="submit">sign in</button>
+        </div>
+    </form>
+    <div id="div_ft">
+        <p>{{auth_validate}}</p>
+        <a href="{% url "sign_up" %}">sing up</a>
+    </div>
+</div>
+{% endblock  %}
+
